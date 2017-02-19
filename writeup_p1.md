@@ -34,6 +34,8 @@ First, lines with little change in their y-value are discarded. Horizontal lines
 
 Reusing the last frames' lane line if a lane line could not be indentified may run into issues if this occurs for consecutive frames.
 
+Problems may occur when changing lanes, once the lane line in the image becomes vertical.
+
 As seen in the "challenge" video, the algorithm is impacted by the camera mounting position, such that peripheral objects now stay in the scene with the constant ROI mask applied. 
 
 The algorithm also runs into trouble when lane lines are not present. Peripheral objects might be identified as lane lines.
@@ -43,6 +45,8 @@ Performance seems to be critical as well. On my desktop machine, the videos are 
 ###3. Possible improvements
 
 To avoid the risk of not finding a lane for multiple frames, lane finding criteria can be relaxed after not finding a plausible lane line for multiple frames. Failure to identify the lane lines needs to be communicated alongside the output.
+
+Issues with lane lines that appear vertical in the image can be avoided by transforming lane representation to polar.
 
 A possible solution to the mounting position problem would be a learning algorithm to adapt for different mounting positions. Though based on my calibration experience, a better solution would be to use different calibrations for different mounting positions. A learning algorithm runs the risk to do more harm than good, and the camera position is fixed for each car model.
 
