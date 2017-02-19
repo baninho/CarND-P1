@@ -4,5 +4,5 @@ Finding lane lines on the road
 
 Files:
 
-..* P1.ipynb
-..* writeup_P1.md
+1. P1.ipynb
+2. writeup_P1.md
